@@ -11,12 +11,17 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var funFactLabel: UILabel!
-    
+    var factProvider = FactProvider()
+
     override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+        funFactLabel.text = factProvider.randomFact(previousFact: nil)
+        funFactLabel.sizeToFit()
     }
 
-
-
+    @IBAction func showFact() {
+        funFactLabel.text = factProvider.randomFact(previousFact: funFactLabel.text)
+        funFactLabel.sizeToFit()
+    }
 }
